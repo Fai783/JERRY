@@ -1,0 +1,13 @@
+int leds[] = {2, 3, 4, 5, 6, 7, 8, 9};
+const int valorDecimal = 700; 
+
+void setup() {
+  for (int i = 0; i < 8; i++) {
+    pinMode(leds[i], OUTPUT);
+    digitalWrite(leds[i], (valorDecimal >> i) & 1);
+  }
+}
+
+void loop() {
+  
+}
