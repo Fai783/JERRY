@@ -1,0 +1,26 @@
+int leds[] = {2, 3, 4, 5, 6, 7, 8, 9};
+int boton = 10;
+int contador = 0;
+bool estadoAnterior = HIGH;
+
+void setup() {
+  for (int i = 0; i < 8; i++) pinMode(leds[i], OUTPUT);
+  pinMode(boton, INPUT_PULLUP);
+  mostrarBinario(contador);
+}
+
+void loop() {
+  bool estadoActual = digitalRead(boton);
+  if (estadoAnterior == HIGH && estadoActual == LOW) {
+    contador++;
+    mostrarBinario(contador);
+    delay(200);
+  }
+  estadoAnterior = estadoActual;
+}
+
+void mostrarBinario(int valor) {
+  for (int i = 0; i < 8; i++) {
+    digitalWrite(leds[i], (valor >> i) & 1);
+  }
+}
